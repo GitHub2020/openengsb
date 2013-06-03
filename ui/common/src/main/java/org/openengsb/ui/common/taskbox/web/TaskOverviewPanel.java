@@ -59,8 +59,8 @@ public class TaskOverviewPanel extends Panel {
     public TaskOverviewPanel(String id) {
         super(id);
         setOutputMarkupId(true);
-        ArrayList<IColumn<Task>> columns = new ArrayList<IColumn<Task>>();
-        IColumn<Task> actionsColumn = new FilteredAbstractColumn<Task>(Model.of("Actions")) {
+        ArrayList<IColumn<Task,String>> columns = new ArrayList<IColumn<Task,String>>();
+        IColumn<Task, String> actionsColumn = new FilteredAbstractColumn<Task, String>(Model.of("Actions")) {
             @Override
             public Component getFilter(String componentId, FilterForm<?> form) {
                 return new GoAndClearFilter(componentId, form);
@@ -74,14 +74,14 @@ public class TaskOverviewPanel extends Panel {
             }
         };
         columns.add(actionsColumn);
-        columns.add(new TextFilteredPropertyColumn<Task, String>(Model.of("TaskId"), "taskId", "taskId"));
-        columns.add(new TextFilteredPropertyColumn<Task, String>(Model.of("TaskType"), "taskType", "taskType"));
+        columns.add(new TextFilteredPropertyColumn<Task, String, String>(Model.of("TaskId"), "taskId", "taskId"));
+        columns.add(new TextFilteredPropertyColumn<Task, String, String>(Model.of("TaskType"), "taskType", "taskType"));
         columns
-            .add(new TextFilteredPropertyColumn<Task, String>(Model.of("Description"), "description", "description"));
-        columns.add(new PropertyColumn<Task>(Model.of("TaskCreationTimestamp"), "taskCreationTimestamp",
+            .add(new TextFilteredPropertyColumn<Task, String, String>(Model.of("Description"), "description", "description"));
+        columns.add(new PropertyColumn<Task, String>(Model.of("TaskCreationTimestamp"), "taskCreationTimestamp",
             "taskCreationTimestamp"));
         FilterForm<Task> form = new FilterForm<Task>("form", dataProvider);
-        DefaultDataTable<Task> dataTable = new DefaultDataTable<Task>("dataTable", columns, dataProvider, 15);
+        DefaultDataTable<Task, String> dataTable = new DefaultDataTable<Task, String>("dataTable", columns, dataProvider, 15);
         dataTable.addTopToolbar(new FilterToolbar(dataTable, form, dataProvider));
         form.add(dataTable);
         add(form);

@@ -32,7 +32,7 @@ import org.ops4j.pax.wicket.api.InjectorHolder;
 import org.ops4j.pax.wicket.api.PaxWicketBean;
 
 @SuppressWarnings({ "serial" })
-public class TaskDataProvider extends SortableDataProvider<Task> implements IFilterStateLocator<Task> {
+public class TaskDataProvider extends SortableDataProvider<Task, String> implements IFilterStateLocator<Task> {
 
     @PaxWicketBean(name = "taskboxService")
     private TaskboxService taskboxService;
@@ -49,15 +49,16 @@ public class TaskDataProvider extends SortableDataProvider<Task> implements IFil
     }
 
     @Override
-    public Iterator<? extends Task> iterator(int first, int count) {
+    public Iterator<? extends Task> iterator(long first, long count) {
         initList();
 
         List<Task> ret = list;
-        if (ret.size() > first + count) {
-            ret = ret.subList(first, first + count);
-        } else {
-            ret = ret.subList(first, ret.size());
-        }
+// TODO
+//        if (ret.size() > first + count) {
+//            ret = ret.subList(first, first + count);
+//        } else {
+//            ret = ret.subList(first, ret.size());
+//        }
         return ret.iterator();
     }
 
@@ -94,7 +95,7 @@ public class TaskDataProvider extends SortableDataProvider<Task> implements IFil
     }
 
     @Override
-    public int size() {
+    public long size() {
         initList();
         return list.size();
     }
@@ -123,5 +124,7 @@ public class TaskDataProvider extends SortableDataProvider<Task> implements IFil
     public void setFilterState(Task state) {
         filter = (TaskFilter) state;
     }
+
+
 
 }

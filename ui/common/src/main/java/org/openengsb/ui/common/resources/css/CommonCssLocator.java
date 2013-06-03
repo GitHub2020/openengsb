@@ -16,25 +16,24 @@
  */
 package org.openengsb.ui.common.resources.css;
 
-import org.apache.wicket.request.resource.PackageResourceReference;
-import org.apache.wicket.request.resource.ResourceReference;
+import org.apache.wicket.request.resource.CssResourceReference;
 
 public final class CommonCssLocator {
 
-    public static ResourceReference getGridsCss() {
-        return new PackageResourceReference(CommonCssLocator.class, "grids.css");
+    public static CssResourceReference getGridsCss() {
+        return new CssResourceReference(CommonCssLocator.class, "grids.css");
     }
 
-    public static ResourceReference getCommonCss() {
-        return new PackageResourceReference(CommonCssLocator.class, "style.css");
+    public static CssResourceReference getCommonCss() {
+        return new CssResourceReference(CommonCssLocator.class, "style.css");
     }
 
-    public static ResourceReference getJqueryUiCss() {
-        return new PackageResourceReference(CommonCssLocator.class, "jquery.css");
+    public static CssResourceReference getJqueryUiCss() {
+        return new CssResourceReference(CommonCssLocator.class, "jquery.css");
     }
     
-    public static ResourceReference getLoginPageCss() {
-        return new PackageResourceReference(CommonCssLocator.class, "loginPage.css");
+    public static CssResourceReference getLoginPageCss() {
+        return new CssResourceReference(CommonCssLocator.class, "loginPage.css");
     }
     
     private CommonCssLocator() {

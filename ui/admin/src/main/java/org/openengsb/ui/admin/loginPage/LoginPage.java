@@ -21,7 +21,9 @@ import java.util.Locale;
 
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.authroles.authentication.AuthenticatedWebSession;
-import org.apache.wicket.markup.html.IHeaderResponse;
+import org.apache.wicket.markup.head.CssHeaderItem;
+import org.apache.wicket.markup.head.IHeaderResponse;
+import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.RequiredTextField;
@@ -33,6 +35,8 @@ import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.StringResourceModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
+import org.apache.wicket.request.resource.CssResourceReference;
+import org.apache.wicket.request.resource.JavaScriptResourceReference;
 import org.openengsb.ui.admin.model.UsernamePassword;
 import org.openengsb.ui.common.OpenEngSBPage;
 import org.openengsb.ui.common.imprint.ImprintPanel;
@@ -67,21 +71,30 @@ public class LoginPage extends OpenEngSBPage {
 
     @Override
     public void renderHead(IHeaderResponse response) {
-        response.renderCSSReference(CommonCssLocator.getGridsCss());
-        response.renderCSSReference(CommonCssLocator.getLoginPageCss());
-        response.renderCSSReference(CommonCssLocator.getJqueryUiCss());
-        response.renderJavaScriptReference(CommonJsLocator.getJqueryJs());
-        response.renderJavaScriptReference(CommonJsLocator.getJqueryUi());
-        response.renderJavaScriptReference(CommonJsLocator.getJqueryHelper());
+    	response.render(CssHeaderItem.forReference(CommonCssLocator.getGridsCss()));
+    	response.render(CssHeaderItem.forReference(CommonCssLocator.getCommonCss()));
+    	response.render(CssHeaderItem.forReference(CommonJsLocator.getJqueryJs()));
+    	response.render(JavaScriptHeaderItem.forReference(new JavaScriptResourceReference(CommonJsLocator.class, "jquery-1.7.2.min.js")));
+    	 //TODO: use of the method getJqueryJs()
+    	//response.renderJavaScriptReference(CommonJsLocator.getJqueryJs());
+    	response.render(JavaScriptHeaderItem.forReference(new JavaScriptResourceReference(CommonJsLocator.class, "jquery-ui-1.8.21.custom.min.js")));
+   	    //TODO: use of the method getJqueryUi()
+    	// response.renderJavaScriptReference(CommonJsLocator.getJqueryUi());
+    	response.render(JavaScriptHeaderItem.forReference(new JavaScriptResourceReference(CommonJsLocator.class, "jqueryHelper.js")));
+
+   	    //TODO: use of the method getJqueryHelper()
+    	//response.renderJavaScriptReference(CommonJsLocator.getJqueryHelper());
 
         // Javascript code to set the focus on the unsername input field. Only necessary for loginpage,
         // therefore injected directly
-        response.renderJavaScript(""
-                + "$(function() {"
-                + "  $(\"#username\").focus();"
-                + "});"
-                + "", "setFocusOnload");
-    }
+    	
+    	//TODO: 
+//        response.renderJavaScript(""
+//                + "$(function() {"
+//                + "  $(\"#username\").focus();"
+//                + "});"
+//                + "", "setFocusOnload");
+  }
 
     private void initContent() {
         @SuppressWarnings("serial")
@@ -97,9 +110,10 @@ public class LoginPage extends OpenEngSBPage {
             }
 
             private void setDefaultResponsePageIfNecessary() {
-                if (!continueToOriginalDestination()) {
-                    setResponsePage(getApplication().getHomePage());
-                }
+            	//TODO:
+//                if (!continueToOriginalDestination()) {
+//                    setResponsePage(getApplication().getHomePage());
+//                }
             }
         };
         loginForm.setModel(new CompoundPropertyModel<UsernamePassword>(user));

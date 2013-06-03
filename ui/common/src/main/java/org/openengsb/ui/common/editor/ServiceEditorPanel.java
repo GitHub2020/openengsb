@@ -34,7 +34,8 @@ import org.apache.wicket.ajax.form.AjaxFormValidatingBehavior;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.extensions.ajax.markup.html.AjaxEditableLabel;
-import org.apache.wicket.markup.html.IHeaderResponse;
+import org.apache.wicket.markup.head.CssHeaderItem;
+import org.apache.wicket.markup.head.IHeaderResponse ;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.CheckBox;
@@ -170,9 +171,8 @@ public class ServiceEditorPanel extends Panel {
         initPanel(attributes, attributeMap, properties);
         add(new Behavior() {
             @Override
-            public void renderHead(Component component, IHeaderResponse response) {
-                response.renderCSSReference(new PackageResourceReference(ServiceEditorPanel.class,
-                    "ServiceEditorPanel.css"));
+            public void renderHead(Component component, IHeaderResponse response) {                
+                response.render(CssHeaderItem.forReference(new PackageResourceReference(ServiceEditorPanel.class, "ServiceEditorPanel.css")));
             }
         });
     }

@@ -29,8 +29,12 @@ import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
-import org.apache.wicket.markup.html.tree.BaseTree;
-import org.apache.wicket.markup.html.tree.LinkTree;
+import org.apache.wicket.extensions.markup.html.repeater.tree.*;
+import org.apache.wicket.extensions.markup.html.tree.LabelTree;
+import org.apache.wicket.extensions.markup.html.tree.BaseTree;
+import org.apache.wicket.extensions.markup.html.tree.LinkTree;
+//import org.apache.wicket.markup.html.tree.BaseTree;
+//import org.apache.wicket.markup.html.tree.LinkTree;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.StringResourceModel;
 import org.openengsb.core.api.security.annotation.SecurityAttribute;
@@ -72,7 +76,6 @@ public class OrganizeGlobalsPage extends BasePage {
 
         final LinkTree tree = new LinkTree("tree", treeModel)
         {
-            @Override
             protected void onNodeLinkClicked(Object node, BaseTree tree, AjaxRequestTarget target) {
                 DefaultMutableTreeNode mnode = (DefaultMutableTreeNode) node;
                 if (!mnode.isLeaf()) {

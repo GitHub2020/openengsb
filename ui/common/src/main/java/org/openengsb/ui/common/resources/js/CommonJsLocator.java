@@ -16,21 +16,21 @@
  */
 package org.openengsb.ui.common.resources.js;
 
-import org.apache.wicket.request.resource.PackageResourceReference;
-import org.apache.wicket.request.resource.ResourceReference;
+
+import org.apache.wicket.request.resource.JavaScriptResourceReference;
 
 public final class CommonJsLocator {
 
-    public static ResourceReference getJqueryJs() {
-        return new PackageResourceReference(CommonJsLocator.class, "jquery-1.7.2.min.js");
+    public static JavaScriptResourceReference getJqueryJs() {
+        return new JavaScriptResourceReference(CommonJsLocator.class, "jquery-1.7.2.min.js");
+    }
+    
+    public static JavaScriptResourceReference getJqueryUi() {
+        return new JavaScriptResourceReference(CommonJsLocator.class, "jquery-ui-1.8.21.custom.min.js");
     }
 
-    public static ResourceReference getJqueryUi() {
-        return new PackageResourceReference(CommonJsLocator.class, "jquery-ui-1.8.21.custom.min.js");
-    }
-
-    public static ResourceReference getJqueryHelper() {
-        return new PackageResourceReference(CommonJsLocator.class, "jqueryHelper.js");
+    public static JavaScriptResourceReference getJqueryHelper() {
+        return new JavaScriptResourceReference(CommonJsLocator.class, "jqueryHelper.js");
     }
     
     private CommonJsLocator() {

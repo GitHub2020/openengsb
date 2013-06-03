@@ -51,8 +51,8 @@ import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
-import org.apache.wicket.markup.html.tree.BaseTree;
-import org.apache.wicket.markup.html.tree.LinkTree;
+import org.apache.wicket.extensions.markup.html.tree.LinkTree;
+import org.apache.wicket.extensions.markup.html.tree.BaseTree;
 import org.apache.wicket.markup.repeater.RepeatingView;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.LoadableDetachableModel;
@@ -135,7 +135,9 @@ public class TestClient extends BasePage {
 
     private WebMarkupContainer argumentListContainer;
 
-    private LinkTree serviceList;
+    //TODO: Linktree is deprecated
+	@SuppressWarnings("deprecation")
+	private LinkTree serviceList;
 
     private FeedbackPanel feedbackPanel;
 
