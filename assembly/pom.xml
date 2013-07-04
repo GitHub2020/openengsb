@@ -61,6 +61,11 @@
 
   <dependencies>
     <dependency>
+      <groupId>org.apache.wicket</groupId>
+      <artifactId>wicket-core</artifactId>
+      <version>${wicket.version}</version>
+    </dependency>
+    <dependency>
       <groupId>org.apache.karaf</groupId>
       <artifactId>apache-karaf</artifactId>
       <type>zip</type>
